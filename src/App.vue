@@ -2,15 +2,12 @@
   <div id="app">
     <h1><router-link to="/">All Posts</router-link></h1>
     {{test}}
-    <div>{{ $route.params.id }}</div>
     <div class="pagination">
-      <a href="#">&laquo;</a>
       <router-link :to="`${page}`" v-for="page in pages" :key="page" active-class="active">{{ page }}</router-link>
-      <a href="#">&raquo;</a>
     </div>
     <hr />
     <div class="post" v-for="(post, index) in showPosts" :key="post.id">
-      <h3>{{ index + 1 }} {{ post.title }} {{ post.id }}</h3>
+      <h3>{{ index}} {{ post.title }} {{ post.id }}</h3>
       <p>{{ post.body }}</p>
     </div>
     <router-view />
@@ -21,14 +18,10 @@ import { mapGetters, mapActions } from "vuex";
 import { mapState } from "vuex";
 
 export default {
-  props: {
-    currentPage: {
-      default: 1,
-    }
-  },
   data() {
     return {
-      perPage: 10
+      perPage: 10,
+      currentPage: 0,
     };
   },
   computed: {
@@ -41,12 +34,12 @@ export default {
       return this.posts.length / this.perPage;
     },
     showPosts() {
-      let from = 0;
-      let to = 10;
+      let from = (this.$route.params.id - 1) * 10;
+      let to = from + 10;
       return this.getPostByPage(from, to);
     },
     test() {
-      return console.log(this.$route.params.path)
+      // return console.log(this.$route.params.id * 10)
     }
   },
   methods: {
