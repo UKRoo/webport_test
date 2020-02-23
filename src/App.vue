@@ -1,54 +1,30 @@
 <template>
   <div id="app">
-    <h1><router-link to="/">All Posts</router-link></h1>
-    {{test}}
-    <div class="pagination">
-      <router-link :to="`${page}`" v-for="page in pages" :key="page" active-class="active">{{ page }}</router-link>
-    </div>
-    <hr />
-    <div class="post" v-for="(post, index) in showPosts" :key="post.id">
-      <h3>{{ index}} {{ post.title }} {{ post.id }}</h3>
-      <p>{{ post.body }}</p>
-    </div>
+      <ul>
+        <li><router-link to="/all/" active-class="active">All Posts</router-link></li>
+        <li><router-link to="/pagination/1" active-class="active">Pagination</router-link></li>
+        <li><router-link to="/add-post/" active-class="active">Add Post</router-link></li>
+        <li><router-link to="/users/" active-class="active">Users</router-link></li>
+      </ul>
     <router-view />
   </div>
 </template>
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 import { mapState } from "vuex";
 
 export default {
-  data() {
-    return {
-      perPage: 10,
-      currentPage: 0,
-    };
-  },
-  computed: {
-    ...mapGetters({
-      posts: "getAllPosts",
-      validPosts: "getValidPosts",
-      getPostByPage: "getPostByPage"
-    }),
-    pages() {
-      return this.posts.length / this.perPage;
-    },
-    showPosts() {
-      let from = (this.$route.params.id - 1) * 10;
-      let to = from + 10;
-      return this.getPostByPage(from, to);
-    },
-    test() {
-      // return console.log(this.$route.params.id * 10)
-    }
-  },
   methods: {
     ...mapActions({
-      loadPosts: "loadPosts"
+      loadPosts: "loadPosts",
+      loadComments: "loadComments",
+      loadUsers: "loadUsers"
     })
   },
   mounted() {
     this.loadPosts();
+    this.loadComments();
+    this.loadUsers();
   }
 };
 </script>
@@ -66,26 +42,33 @@ export default {
   border-radius: 5px;
   padding: 10px;
 }
-
-// Pagination
-.pagination {
-  display: inline-block;
-  margin: 10px auto;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
 }
 
-.pagination a {
-  color: black;
+li {
   float: left;
-  padding: 8px 16px;
+}
+
+li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
 }
 
-.pagination a.active {
-  background-color: #4caf50;
-  color: white;
+li a:hover:not(.active) {
+  background-color: #ddd;
 }
 
-.pagination a:hover:not(.active) {
-  background-color: #ddd;
+li a.active {
+  color: white;
+  background-color: #4CAF50;
 }
 </style>

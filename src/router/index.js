@@ -1,18 +1,31 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import Home from '../views/Home.vue'
+import Pagination from '../views/Pagination.vue'
+import AllPosts from '../views/AllPosts.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    // component: Home
+    path: '/all/',
+    name: 'AllPosts',
+    component: AllPosts
   },
   {
-    path: '*/:id',
+    path: '/pagination',
+    name: 'Pagination',
+    component: Pagination
   },
+  {
+    path: '/pagination/:id',
+    name: 'Pagination',
+    component: Pagination
+  },
+  // {
+  //   path: '/users/',
+  //   name: 'Users',
+  //   component: Users
+  // },
 ]
 
 const router = new VueRouter({
@@ -22,3 +35,4 @@ const router = new VueRouter({
 })
 
 export default router
+
