@@ -10,7 +10,7 @@
       >{{ page }}</router-link>
     </div>
     <div class="post" v-for="(post, index) in showPosts" :key="post.id">
-      <h3>{{ index }} {{ post.title }} {{ post.id }}</h3>
+      <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
     </div>
   </div>

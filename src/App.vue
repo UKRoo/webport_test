@@ -1,9 +1,9 @@
 <template>
   <div id="app">
       <ul>
-        <li><router-link to="/all/" active-class="active">All Posts</router-link></li>
+        <li><router-link to="/all" active-class="active">All Posts</router-link></li>
         <li><router-link to="/pagination/1" active-class="active">Pagination</router-link></li>
-        <li><router-link to="/users/" active-class="active">Users</router-link></li>
+        <li><router-link to="/users" active-class="active">Users</router-link></li>
       </ul>
     <router-view />
   </div>
@@ -39,8 +39,9 @@ body {
   justify-content: center;
 }
 .post {
-  display: block;
-  width: 300px;
+  display: flex;
+  flex-direction: column;
+  width: 550px;
   margin: 10px auto;
   border-left: 4px solid #4CAF50;
   border-radius: 5px;

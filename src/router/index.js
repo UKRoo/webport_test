@@ -8,22 +8,22 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/all/',
+    path: '/all',
     name: 'AllPosts',
     component: AllPosts
   },
-  {
-    path: '/pagination/',
-    name: 'Pagination',
-    component: Pagination
-  },
+  // {
+  //   path: '/pagination/',
+  //   // name: 'Pagination',
+  //   component: Pagination
+  // },
   {
     path: '*pagination/:id',
     name: 'Pagination',
     component: Pagination
   },
   {
-    path: '/users/',
+    path: '/users',
     name: 'Users',
     component: Users
   },
