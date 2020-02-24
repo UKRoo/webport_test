@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Pagination from '../views/Pagination.vue'
 import AllPosts from '../views/AllPosts.vue'
+import Users from '../views/Users.vue'
 
 Vue.use(VueRouter)
 
@@ -12,20 +13,20 @@ const routes = [
     component: AllPosts
   },
   {
-    path: '/pagination',
+    path: '/pagination/',
     name: 'Pagination',
     component: Pagination
   },
   {
-    path: '/pagination/:id',
+    path: '*pagination/:id',
     name: 'Pagination',
     component: Pagination
   },
-  // {
-  //   path: '/users/',
-  //   name: 'Users',
-  //   component: Users
-  // },
+  {
+    path: '/users/',
+    name: 'Users',
+    component: Users
+  },
 ]
 
 const router = new VueRouter({

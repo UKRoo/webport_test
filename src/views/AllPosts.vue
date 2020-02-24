@@ -1,5 +1,6 @@
 <template>
   <div class="all-posts-wrapper">
+    <AddPost />
     <div class="post" v-for="(post, index) in posts" :key="post.id">
       <h3>{{ index }} {{ post.title }} {{ post.id }}</h3>
       <p>{{ post.body }}</p>
@@ -7,15 +8,17 @@
   </div>
 </template>
 <script>
+import AddPost from "../components/AddPost.vue";
 import { mapGetters, mapActions } from "vuex";
-// import { mapState } from "vuex";
 
 export default {
   computed: {
     ...mapGetters({
-      posts: "getAllPosts",
-    }),
+      posts: "getAllPosts"
+    })
   },
+  components: {
+    AddPost
+  }
 };
 </script>
-

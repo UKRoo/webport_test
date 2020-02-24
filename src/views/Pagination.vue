@@ -1,15 +1,14 @@
 <template>
   <div class="pagination-wrapper">
+    <AddPost />
     <div class="pagination">
       <router-link
         :to="`/pagination/${page}`"
         v-for="page in pages"
         :key="page"
         active-class="active"
-        >{{ page }}</router-link
-      >
+      >{{ page }}</router-link>
     </div>
-    <hr />
     <div class="post" v-for="(post, index) in showPosts" :key="post.id">
       <h3>{{ index }} {{ post.title }} {{ post.id }}</h3>
       <p>{{ post.body }}</p>
@@ -17,6 +16,7 @@
   </div>
 </template>
 <script>
+import AddPost from "../components/AddPost.vue";
 import { mapGetters, mapActions } from "vuex";
 import { mapState } from "vuex";
 
@@ -26,20 +26,23 @@ export default {
       perPage: 10
     };
   },
+  components: {
+    AddPost
+  },
   computed: {
     ...mapGetters({
       posts: "getAllPosts",
       getPostByPage: "getPostByPage"
     }),
     pages() {
-      return this.posts.length / this.perPage;
+      return Math.round(this.posts.length / this.perPage);
     },
     showPosts() {
       let from = (this.$route.params.id - 1) * this.perPage;
       let to = from + this.perPage;
       return this.getPostByPage(from, to);
     }
-  },
+  }
 };
 </script>
 <style lang="scss">

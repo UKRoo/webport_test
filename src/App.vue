@@ -3,7 +3,6 @@
       <ul>
         <li><router-link to="/all/" active-class="active">All Posts</router-link></li>
         <li><router-link to="/pagination/1" active-class="active">Pagination</router-link></li>
-        <li><router-link to="/add-post/" active-class="active">Add Post</router-link></li>
         <li><router-link to="/users/" active-class="active">Users</router-link></li>
       </ul>
     <router-view />
@@ -29,6 +28,11 @@ export default {
 };
 </script>
 <style lang="scss">
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+}
 #app {
   display: flex;
   flex-direction: column;
@@ -38,9 +42,10 @@ export default {
   display: block;
   width: 300px;
   margin: 10px auto;
-  border: 1px solid #000;
+  border-left: 4px solid #4CAF50;
   border-radius: 5px;
   padding: 10px;
+  background-color: #ffffff;
 }
 ul {
   list-style-type: none;
@@ -70,5 +75,19 @@ li a:hover:not(.active) {
 li a.active {
   color: white;
   background-color: #4CAF50;
+}
+.button {
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: green;
 }
 </style>

@@ -48,16 +48,25 @@ export default new Vuex.Store({
     SET_USERS(state, users) {
       state.users = users;
     },
+    ADD_POST(state, post) {
+      state.posts.unshift(post);
+    },
   },
   getters: {
     getAllPosts(state) {
-      return state.posts;
-    },
-    getValidPosts(state) {
+      // return state.posts;
       return state.posts.filter(p => {
-        return p.id >= 1 && p.id <= 10;
+        return p.title && p.body;
       });
     },
+    getAllUsers(state) {
+      return state.users;
+    },
+    // getValidPosts(state) {
+    //   return state.posts.filter(p => {
+    //     return p.id >= 1 && p.id <= 10;
+    //   });
+    // },
     // getPostByPage: (state, getters) => (a, b) => {
     //   return state.posts.filter(post => post.id >= a && post.id <= b)
     // },
