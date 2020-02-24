@@ -38,6 +38,7 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+.comment,
 .post {
   display: flex;
   flex-direction: column;
@@ -47,6 +48,7 @@ body {
   border-radius: 5px;
   padding: 10px;
   background-color: #ffffff;
+  cursor: pointer;
 }
 ul {
   list-style-type: none;

@@ -65,12 +65,10 @@ export default new Vuex.Store({
       return state.posts.slice(from, to)
     },
     getPostById: (state) => (postId) => {
-      return state.posts.filter(post => post.id === postId)
+      return state.posts.find(post => post.id === postId)
     },
     getCommentsForPost: (state) => (postId) => {
-      return state.comments.filter(p => {
-        return p.id == postId;
-      });
+      return state.comments.filter(comment => comment.postId === postId)
     },
   },
   modules: {

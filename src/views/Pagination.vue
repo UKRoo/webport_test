@@ -9,10 +9,10 @@
         active-class="active"
       >{{ page }}</router-link>
     </div>
-    <div class="post" v-for="post in showPosts" :key="post.id">
+    <router-link tag="div" :to="`/post-${post.id}`" class="post" v-for="post in showPosts" :key="post.id">
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
-    </div>
+    </router-link>
   </div>
 </template>
 <script>

@@ -13,11 +13,6 @@ const routes = [
     name: 'AllPosts',
     component: AllPosts
   },
-  // {
-  //   path: '/pagination/',
-  //   // name: 'Pagination',
-  //   component: Pagination
-  // },
   {
     path: '*pagination/:id',
     name: 'Pagination',
@@ -29,7 +24,7 @@ const routes = [
     component: Users
   },
   {
-    path: '/post',
+    path: '/post-:id',
     name: 'Post',
     component: Post
   },

@@ -1,10 +1,10 @@
 <template>
   <div class="all-posts-wrapper">
     <AddPost />
-    <div class="post" v-for="(post, index) in posts" :key="post.id">
+    <router-link tag="div" :to="`/post-${post.id}`" class="post" v-for="post in posts" :key="post.id">
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
-    </div>
+    </router-link>
   </div>
 </template>
 <script>
@@ -15,7 +15,8 @@ export default {
   computed: {
     ...mapGetters({
       posts: "getAllPosts"
-    })
+    }),
+
   },
   components: {
     AddPost
