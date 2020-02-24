@@ -4,6 +4,7 @@ import Pagination from '../views/Pagination.vue'
 import AllPosts from '../views/AllPosts.vue'
 import Users from '../views/Users.vue'
 import Post from '../views/Post.vue'
+import Modal from '../components/Modal.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ const routes = [
     name: 'Post',
     component: Post
   },
+  // {
+  //   path: '/m-:id',
+  //   name: 'Modal',
+  //   component: Modal
+  // },
 ]
 
 const router = new VueRouter({

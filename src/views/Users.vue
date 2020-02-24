@@ -13,11 +13,14 @@
         <td>{{ user.name }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.website }}</td>
-        <td><button class="button">Info</button></td>
+        <td>
+            <button type="button" class="button" @click="showModal">
+              Info
+            </button>
+            <modal v-show="isModalVisible" @close="closeModal"/>
+        </td>
       </tr>
     </table>
-
-    <Modal />
   </div>
 </template>
 <script>
@@ -27,6 +30,19 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   components: {
     Modal
+  },
+  data() {
+    return {
+      isModalVisible: false
+    };
+  },
+  methods: {
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    }
   },
   computed: {
     ...mapGetters({
@@ -52,5 +68,4 @@ th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
-
 </style>
