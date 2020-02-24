@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Pagination from '../views/Pagination.vue'
 import AllPosts from '../views/AllPosts.vue'
 import Users from '../views/Users.vue'
+import Post from '../views/Post.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     name: 'Users',
     component: Users
   },
+  {
+    path: '/post',
+    name: 'Post',
+    component: Post
+  },
 ]
 
 const router = new VueRouter({
@@ -36,4 +42,3 @@ const router = new VueRouter({
 })
 
 export default router
-

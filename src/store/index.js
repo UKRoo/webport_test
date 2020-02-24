@@ -23,7 +23,7 @@ export default new Vuex.Store({
     },
     loadComments({ commit }) {
       axios
-        .get('https://jsonplaceholder.typicode.com/posts')
+        .get('https://jsonplaceholder.typicode.com/comments')
         .then(r => r.data)
         .then(comments => {
           commit('SET_COMMENTS', comments)
@@ -54,7 +54,6 @@ export default new Vuex.Store({
   },
   getters: {
     getAllPosts(state) {
-      // return state.posts;
       return state.posts.filter(p => {
         return p.title && p.body;
       });
@@ -62,16 +61,16 @@ export default new Vuex.Store({
     getAllUsers(state) {
       return state.users;
     },
-    // getValidPosts(state) {
-    //   return state.posts.filter(p => {
-    //     return p.id >= 1 && p.id <= 10;
-    //   });
-    // },
-    // getPostByPage: (state, getters) => (a, b) => {
-    //   return state.posts.filter(post => post.id >= a && post.id <= b)
-    // },
-    getPostByPage: (state, getters) => (a, b) => {
-      return state.posts.slice(a, b)
+    getPostByPage: (state) => (from, to) => {
+      return state.posts.slice(from, to)
+    },
+    getPostById: (state) => (postId) => {
+      return state.posts.filter(post => post.id === postId)
+    },
+    getCommentsForPost: (state) => (postId) => {
+      return state.comments.filter(p => {
+        return p.id == postId;
+      });
     },
   },
   modules: {
