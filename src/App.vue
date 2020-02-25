@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <ul>
-      <li><router-link to="/" active-class="active" exact="/">All Posts</router-link></li>
       <li>
-        <router-link to="/pagination/1" active-class="active"
-          >Pagination</router-link
-        >
+        <router-link to="/" active-class="active" exact>All Posts</router-link>
+      </li>
+      <li>
+        <router-link to="/pagination/1" active-class="active">Pagination</router-link>
       </li>
       <li>
         <router-link to="/users" active-class="active">Users</router-link>
