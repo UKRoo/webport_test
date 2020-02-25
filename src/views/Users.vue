@@ -14,10 +14,11 @@
         <td>{{ user.email }}</td>
         <td>{{ user.website }}</td>
         <td>
-            <button type="button" class="button" @click="showModal">
+            <button type="button" class="button" @click="showModal" :id="user.id">
               Info
             </button>
-            <modal v-show="isModalVisible" @close="closeModal"/>
+            <modal v-show="isModalVisible" @close="closeModal" :user="thisID"/>
+           
         </td>
       </tr>
     </table>
@@ -33,16 +34,19 @@ export default {
   },
   data() {
     return {
-      isModalVisible: false
+      isModalVisible: false,
+      thisID: "",
+      // companyInfo: [],
     };
   },
   methods: {
     showModal() {
       this.isModalVisible = true;
+      this.thisID = event.currentTarget.id;
     },
     closeModal() {
       this.isModalVisible = false;
-    }
+    },
   },
   computed: {
     ...mapGetters({

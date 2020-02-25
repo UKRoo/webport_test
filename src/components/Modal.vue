@@ -10,7 +10,7 @@
         </header>
         <section class="modal-body" id="modalDescription">
           <slot name="body">
-            <p>paragrph1 {{id}}</p>
+            <p>{{user}}</p>
             <p>paragrph1</p>
             <p>paragrph1</p>
             <p>paragrph1</p>
@@ -23,15 +23,11 @@
 <script>
 export default {
   name: "modal",
-  props: {
-    id: {
-      type: [String, Number],
-    },
-  },
+  props: ['user'],
   methods: {
     close() {
       this.$emit("close");
-    }
+    },
   }
 };
 </script>
@@ -53,7 +49,7 @@ export default {
 
 .modal {
   background: #ffffff;
-  box-shadow: 2px 2px 20px 1px;
+  box-shadow: 2px 2px 1px 1px;
   overflow-x: auto;
   display: flex;
   flex-direction: column;
