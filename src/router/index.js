@@ -1,45 +1,39 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Pagination from '../views/Pagination.vue'
-import AllPosts from '../views/AllPosts.vue'
-import Users from '../views/Users.vue'
-import Post from '../views/Post.vue'
-import Modal from '../components/Modal.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Pagination from "../views/Pagination.vue";
+import AllPosts from "../views/AllPosts.vue";
+import Users from "../views/Users.vue";
+import Post from "../views/Post.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/all',
-    name: 'AllPosts',
+    path: "/",
+    name: "AllPosts",
     component: AllPosts
   },
   {
-    path: '*pagination/:id',
-    name: 'Pagination',
+    path: "*pagination/:id",
+    name: "Pagination",
     component: Pagination
   },
   {
-    path: '/users',
-    name: 'Users',
+    path: "/users",
+    name: "Users",
     component: Users
   },
   {
-    path: '/post-:id',
-    name: 'Post',
+    path: "/post-:id",
+    name: "Post",
     component: Post
-  },
-  // {
-  //   path: '/m-:id',
-  //   name: 'Modal',
-  //   component: Modal
-  // },
-]
+  }
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
-})
+});
 
-export default router
+export default router;

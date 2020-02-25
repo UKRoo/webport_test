@@ -7,9 +7,16 @@
         v-for="page in pages"
         :key="page"
         active-class="active"
-      >{{ page }}</router-link>
+        >{{ page }}</router-link
+      >
     </div>
-    <router-link tag="div" :to="`/post-${post.id}`" class="post" v-for="post in showPosts" :key="post.id">
+    <router-link
+      tag="div"
+      :to="`/post-${post.id}`"
+      class="post"
+      v-for="post in showPosts"
+      :key="post.id"
+    >
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
     </router-link>
@@ -45,32 +52,3 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-.pagination-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-// Pagination
-.pagination {
-  display: inline-block;
-  margin: 10px auto;
-}
-
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-.pagination a.active {
-  background-color: #4caf50;
-  color: white;
-}
-
-.pagination a:hover:not(.active) {
-  background-color: #ddd;
-}
-</style>

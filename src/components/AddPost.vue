@@ -1,9 +1,13 @@
 <template>
   <form @submit.prevent="submit">
-    <label for="title"><b>Title:</b></label>
-    <input type="text" v-model="title" required/>
-    <label for="title"><b>Body:</b></label>
-    <input type="text" v-model="body" required/>
+    <div class="row">
+      <label for="title"><b>Title:</b></label>
+      <input type="text" v-model="title" required />
+    </div>
+    <div class="row">
+      <label for="title"><b>Text:</b></label>
+      <input type="text" v-model="body" required />
+    </div>
     <button class="button" type="submit">Add Post</button>
   </form>
 </template>
@@ -33,17 +37,3 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-  form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-  }
-  label {
-    padding-left: 10px;
-  }
-  input{
-  margin: 10px;
-  }
-</style>

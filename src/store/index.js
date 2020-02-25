@@ -1,42 +1,42 @@
-import Vue from "vue"
-import Vuex from "vuex"
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import Vue from "vue";
+import Vuex from "vuex";
+import axios from "axios";
+import VueAxios from "vue-axios";
 
 Vue.use(Vuex);
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
 export default new Vuex.Store({
   state: {
     posts: [],
     comments: [],
-    users: [],
+    users: []
   },
   actions: {
     loadPosts({ commit }) {
       axios
-        .get('https://jsonplaceholder.typicode.com/posts')
+        .get("https://jsonplaceholder.typicode.com/posts")
         .then(r => r.data)
         .then(posts => {
-          commit('SET_POSTS', posts)
-        })
+          commit("SET_POSTS", posts);
+        });
     },
     loadComments({ commit }) {
       axios
-        .get('https://jsonplaceholder.typicode.com/comments')
+        .get("https://jsonplaceholder.typicode.com/comments")
         .then(r => r.data)
         .then(comments => {
-          commit('SET_COMMENTS', comments)
-        })
+          commit("SET_COMMENTS", comments);
+        });
     },
     loadUsers({ commit }) {
       axios
-        .get('https://jsonplaceholder.typicode.com/users')
+        .get("https://jsonplaceholder.typicode.com/users")
         .then(r => r.data)
         .then(users => {
-          commit('SET_USERS', users)
-        })
-    },
+          commit("SET_USERS", users);
+        });
+    }
   },
   mutations: {
     SET_POSTS(state, posts) {
@@ -50,7 +50,7 @@ export default new Vuex.Store({
     },
     ADD_POST(state, post) {
       state.posts.unshift(post);
-    },
+    }
   },
   getters: {
     getAllPosts(state) {
@@ -61,17 +61,14 @@ export default new Vuex.Store({
     getAllUsers(state) {
       return state.users;
     },
-    getPostByPage: (state) => (from, to) => {
-      return state.posts.slice(from, to)
+    getPostByPage: state => (from, to) => {
+      return state.posts.slice(from, to);
     },
-    getPostById: (state) => (postId) => {
-      return state.posts.find(post => post.id === postId)
+    getPostById: state => postId => {
+      return state.posts.find(post => post.id === postId);
     },
-    getCommentsForPost: (state) => (postId) => {
-      return state.comments.filter(comment => comment.postId === postId)
-    },
-  },
-  modules: {
-
+    getCommentsForPost: state => postId => {
+      return state.comments.filter(comment => comment.postId === postId);
+    }
   }
 });

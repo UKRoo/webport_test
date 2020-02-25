@@ -1,7 +1,13 @@
 <template>
   <div class="all-posts-wrapper">
     <AddPost />
-    <router-link tag="div" :to="`/post-${post.id}`" class="post" v-for="post in posts" :key="post.id">
+    <router-link
+      tag="div"
+      :to="`/post-${post.id}`"
+      class="post"
+      v-for="post in posts"
+      :key="post.id"
+    >
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
     </router-link>
@@ -15,8 +21,7 @@ export default {
   computed: {
     ...mapGetters({
       posts: "getAllPosts"
-    }),
-
+    })
   },
   components: {
     AddPost

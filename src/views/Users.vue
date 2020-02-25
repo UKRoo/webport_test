@@ -4,21 +4,25 @@
       <tr>
         <th>id</th>
         <th>Name</th>
-        <th>Email</th>
-        <th>Web-site</th>
+        <th>Email / Website</th>
         <th></th>
       </tr>
       <tr v-for="user in users" :key="user.id">
         <td>{{ user.id }}</td>
         <td>{{ user.name }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.website }}</td>
+        <td class="col">
+          {{ user.email.toLowerCase() }}
+          <span>{{ user.website }}</span>
+        </td>
         <td>
-            <button type="button" class="button" @click="showModal" :id="user.id">
-              Info
-            </button>
-            <modal v-show="isModalVisible" @close="closeModal" :user="thisID"/>
-           
+          <button type="button" class="button" @click="showModal" :id="user.id">
+            Info
+          </button>
+          <modal
+            v-show="isModalVisible"
+            @close="closeModal"
+            :companyInfo="companyInfo"
+          />
         </td>
       </tr>
     </table>
@@ -35,18 +39,19 @@ export default {
   data() {
     return {
       isModalVisible: false,
-      thisID: "",
-      // companyInfo: [],
+      companyInfo: {}
     };
   },
   methods: {
     showModal() {
       this.isModalVisible = true;
-      this.thisID = event.currentTarget.id;
+      let thisID = event.currentTarget.id;
+      this.companyInfo = {};
+      this.companyInfo = this.users[thisID - 1].company;
     },
     closeModal() {
       this.isModalVisible = false;
-    },
+    }
   },
   computed: {
     ...mapGetters({
@@ -55,21 +60,3 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
